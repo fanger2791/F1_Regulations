@@ -1,11 +1,8 @@
-# Starter folder
+# How did the 2022 F1 Regulations change the sport for better and for worse
 
 ## Overview
 
-This repo provides students with a foundation for their own projects associated with *Telling Stories with Data*. You do not need every aspect for every paper and you should delete aspects that you do not need.
-
-To use this folder, click the green "Code" button", then "Download ZIP". Move the downloaded folder to where you want to work on your own computer, and then modify it to suit.
-
+This paper analyzes data aquired from formula1.com that investigates the regulation changes that occured between 2021 and 2022 by focusing on laptimes on different types of tracks such as straight-line speed, high-speed corners, and low-speed corners, comparing the performance of 2022 cars with their 2021 versions. The paper will highlight the strides made towards closer racing, providing more overtaking opportunities due to the weight, speed and downforce of the cars. 
 
 ## File Structure
 
@@ -21,4 +18,4 @@ The repo is structured as:
 
 ## Statement on LLM usage
 
-Aspects of the code were written with the help of the auto-complete tool, Codriver. The abstract and introduction were written with the help of ChatHorse and the entire chat history is available in inputs/llms/usage.txt.
+LLMs were not used in the research, replication, or writing of this paper.
