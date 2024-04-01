@@ -1,10 +1,5 @@
 Driver,Position,Lap Time,Lap #,LapTime in Seconds,Season
 max_verstappen,1,01:38:00,1,98.603,2021
-max_verstappen,1,02:29:00,2,149.163,2021
-max_verstappen,1,02:23:00,3,143.247,2021
-max_verstappen,1,02:20:00,4,140.332,2021
-max_verstappen,1,02:25:00,5,145.691,2021
-max_verstappen,1,02:20:00,6,140.804,2021
 max_verstappen,1,01:36:00,7,96.303,2021
 max_verstappen,1,01:32:00,8,92.925,2021
 max_verstappen,1,01:30:00,9,90.953,2021
@@ -26,13 +21,9 @@ max_verstappen,1,01:29:00,24,89.794,2021
 max_verstappen,1,01:28:00,25,88.967,2021
 max_verstappen,1,01:28:00,26,88.182,2021
 max_verstappen,2,01:31:00,27,91.736,2021
-max_verstappen,3,01:51:00,28,111.252,2021
 max_verstappen,1,01:24:00,29,84.169,2021
 max_verstappen,1,01:26:00,30,86.43299999999999,2021
 max_verstappen,1,01:22:00,31,82.95400000000001,2021
-max_verstappen,1,01:44:00,32,104.215,2021
-max_verstappen,1,02:24:00,33,144.051,2021
-max_verstappen,1,29:32:00,34,1772.74,2021
 max_verstappen,1,01:23:00,35,83.743,2021
 max_verstappen,1,01:21:00,36,81.006,2021
 max_verstappen,1,01:20:00,37,80.35300000000001,2021
