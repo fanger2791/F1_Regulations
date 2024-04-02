@@ -21,6 +21,10 @@ bibliography: references.bib
 # Results
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
 library(ggplot2)
 library(readr)
 library(dplyr)
@@ -50,6 +54,10 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
 ```
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
 library(ggplot2)
 library(readr)
 library(dplyr)
