@@ -9,18 +9,56 @@
 
 
 #### Workspace setup ####
-library(opendatatoronto)
 library(tidyverse)
-# [...UPDATE THIS...]
+library(f1dataR)
+library(knitr)
+library(janitor)
+library(lubridate)
 
 #### Download data ####
-# [...ADD CODE HERE TO DOWNLOAD...]
 
+# EXPLAIAN THE f1dataR package
+
+# To acquire laptime data for a specific driver for a specific race, we used the f1dataR package.
+# Within the package, there is a function called "load_laps" where this function loads lap-by-lap time data for all drivers in a given season and round.
+
+# Load Data from the Jeddah Race in 2022 for Verstappen, Hamilton and Leclerc
+
+# Verstappen Lap Times Jeddah 2022
+laps_data_jeddah <- load_laps(season = 2022, round = 2)
+verstappen_laps_jeddah <- laps_data_jeddah[laps_data$driver_id == 'max_verstappen', ]
+
+# Hamilton Lap Times Jeddah 2022
+laps_data_jeddah <- load_laps(season = 2022, round = 2)
+hamilton_laps_jeddah <- laps_data_jeddah[laps_data$driver_id == 'hamilton', ]
+
+# Leclerc Lap Times Jeddah 2022
+laps_data_jeddah <- load_laps(season = 2022, round = 2)
+leclerc_laps_jeddah <- laps_data_jeddah[laps_data$driver_id == 'leclerc', ]
+
+# Load Data from the Jeddah Race in 2021 for Verstappen, Hamilton and Leclerc
+
+# Verstappen Lap Times Jeddah 2021
+laps_data_jeddah <- load_laps(season = 2021, round = 2)
+verstappen_laps_jeddah_2021 <- laps_data_jeddah[laps_data_jeddah$driver_id == 'max_verstappen', ]
+
+# Hamilton Lap Times Jeddah 2021
+laps_data_jeddah <- load_laps(season = 2021, round = 2)
+hamilton_laps_jeddah_2021 <- laps_data_jeddah[laps_data_jeddah$driver_id == 'hamilton', ]
+
+# Leclerc Lap Times Jeddah 2021
+laps_data_jeddah <- load_laps(season = 2021, round = 2)
+leclerc_laps_jeddah_2021 <- laps_data_jeddah[laps_data_jeddah$driver_id == 'leclerc', ]
 
 
 #### Save data ####
-# [...UPDATE THIS...]
-# change the_raw_data to whatever name you assigned when you downloaded it.
-write_csv(the_raw_data, "inputs/data/raw_data.csv") 
+
+write_csv(verstappen_laps_jeddah, "data/raw_data/verstappen_laps_jeddah.csv") 
+write_csv(hamilton_laps_jeddah, "data/raw_data/hamilton_laps_jeddah.csv") 
+write_csv(leclerc_laps_jeddah, "data/raw_data/leclerc_laps_jeddah.csv") 
+
+write_csv(verstappen_laps_jeddah_2021, "data/raw_data/verstappen_laps_jeddah_2021.csv") 
+write_csv(hamilton_laps_jeddah_2021, "data/raw_data/hamilton_laps_jeddah_2021.csv") 
+write_csv(leclerc_laps_jeddah_2021, "data/raw_data/leclerc_laps_jeddah_2021.csv") 
 
          
