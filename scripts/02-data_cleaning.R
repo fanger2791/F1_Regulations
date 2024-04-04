@@ -108,9 +108,33 @@ raw_ham_jeddah_2021 <- raw_ham_jeddah_2021 %>%
 
 #### Clean Leclerc Jeddah 2022 DataSet ####
 
+# Check structure
+str(raw_lec_jeddah_2022)
+# Convert time_sec to numeric
+raw_lec_jeddah_2022 <- raw_lec_jeddah_2022 %>%
+  mutate(time_sec = as.numeric(time_sec), 
+         season = as.factor(season))
+#Assuming laps over 100 seconds are due to errors or non-racing reasons (pitstops):
+raw_lec_jeddah_2022 <- filter(raw_lec_jeddah_2022, time_sec < 100)
+#Remove rows with missing values
+raw_lec_jeddah_2022 <- drop_na(raw_lec_jeddah_2022)
+raw_lec_jeddah_2022 <- raw_lec_jeddah_2022 %>%
+  rename(Driver = driver_id,`Position`= position, `Lap Time` = time, `Lap #`= lap, `LapTime in Seconds`= time_sec, `Season` = season)
 
+#### Clean Leclerc Jeddah 2021 DataSet ####
 
-
+# Check structure
+str(raw_lec_jeddah_2021)
+# Convert time_sec to numeric
+raw_lec_jeddah_2021 <- raw_lec_jeddah_2021 %>%
+  mutate(time_sec = as.numeric(time_sec), 
+         season = as.factor(season))
+#Assuming laps over 100 seconds are due to errors or non-racing reasons (pitstops):
+raw_lec_jeddah_2021 <- filter(raw_lec_jeddah_2021, time_sec < 100)
+#Remove rows with missing values
+raw_lec_jeddah_2021 <- drop_na(raw_lec_jeddah_2021)
+raw_lec_jeddah_2021 <- raw_lec_jeddah_2021 %>%
+  rename(Driver = driver_id,`Position`= position, `Lap Time` = time, `Lap #`= lap, `LapTime in Seconds`= time_sec, `Season` = season)
 
 #### Save data ####
 write_csv(raw_standings_2022, "data/analysis_data/standings_2022_cleaned.csv")
@@ -119,4 +143,7 @@ write_csv(raw_ver_jeddah_2022, "data/analysis_data/verstappen_laps_jeddah_2022_c
 write_csv(raw_ver_jeddah_2021, "data/analysis_data/verstappen_laps_jeddah_2021_cleaned.csv")
 write_csv(raw_ham_jeddah_2022, "data/analysis_data/hamilton_laps_jeddah_2022_cleaned.csv")
 write_csv(raw_ham_jeddah_2021, "data/analysis_data/hamilton_laps_jeddah_2021_cleaned.csv")
+write_csv(raw_lec_jeddah_2022, "data/analysis_data/leclerc_laps_jeddah_2022_cleaned.csv")
+write_csv(raw_lec_jeddah_2021, "data/analysis_data/leclerc_laps_jeddah_2021_cleaned.csv")
+
 
