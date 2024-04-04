@@ -15,6 +15,8 @@ library(dplyr)
 #### Clean data ####
 
 # Read in DataSets
+raw_standings_2022 <- read_csv("data/raw_data/standings_2022.csv")
+raw_standings_2021 <- read_csv("data/raw_data/standings_2021.csv")
 raw_ver_jeddah_2022 <- read_csv("data/raw_data/verstappen_laps_jeddah.csv")
 raw_ver_jeddah_2021 <- read_csv("data/raw_data/verstappen_laps_jeddah_2021.csv")
 raw_ham_jeddah_2022 <- read_csv("data/raw_data/hamilton_laps_jeddah.csv")
@@ -22,6 +24,15 @@ raw_ham_jeddah_2021 <- read_csv("data/raw_data/hamilton_laps_jeddah_2021.csv")
 raw_lec_jeddah_2022 <- read_csv("data/raw_data/leclerc_laps_jeddah.csv")
 raw_lec_jeddah_2021 <- read_csv("data/raw_data/leclerc_laps_jeddah_2021.csv")
 
+#### Clean Standings 2022 DataSet ####
+
+raw_standings_2022 <- raw_standings_2022 %>%
+  rename(Driver = driver_id,`Position`= position, `Points` = points, `Wins`= wins, `Constructors`= constructor_id)
+
+#### Clean Standings 2021 DataSet ####
+
+raw_standings_2021 <- raw_standings_2021 %>%
+  rename(Driver = driver_id,`Position`= position, `Points` = points, `Wins`= wins, `Constructors`= constructor_id)
 
 #### Clean Verstappen Jeddah 2022 DataSet ####
 
@@ -90,6 +101,8 @@ raw_ham_jeddah_2021 <- raw_ham_jeddah_2021 %>%
 
 
 #### Save data ####
+write_csv(raw_standings_2022, "data/analysis_data/standings_2022_cleaned.csv")
+write_csv(raw_standings_2021, "data/analysis_data/standings_2021_cleaned.csv")
 write_csv(raw_ver_jeddah_2022, "data/analysis_data/verstappen_laps_jeddah_2022_cleaned.csv")
 write_csv(raw_ver_jeddah_2021, "data/analysis_data/verstappen_laps_jeddah_2021_cleaned.csv")
 write_csv(raw_ham_jeddah_2022, "data/analysis_data/hamilton_laps_jeddah_2022_cleaned.csv")
