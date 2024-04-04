@@ -1,22 +1,22 @@
 Driver,Position,Points,Wins,Constructors
-max_verstappen,1,395.5,10,red_bull
-hamilton,2,387.5,8,mercedes
-bottas,3,226,1,mercedes
-perez,4,190,1,red_bull
-sainz,5,164.5,0,ferrari
-norris,6,160,0,mclaren
-leclerc,7,159,0,ferrari
-ricciardo,8,115,1,mclaren
-gasly,9,110,0,alphatauri
-alonso,10,81,0,alpine
-ocon,11,74,1,alpine
-vettel,12,43,0,aston_martin
-stroll,13,34,0,aston_martin
-tsunoda,14,32,0,alphatauri
-russell,15,16,0,williams
-raikkonen,16,10,0,alfa
-latifi,17,7,0,williams
-giovinazzi,18,3,0,alfa
-mick_schumacher,19,0,0,haas
-kubica,20,0,0,alfa
-mazepin,21,0,0,haas
+Max Verstappen,1,395.5,10,Red Bull
+Hamilton,2,387.5,8,Mercedes
+Bottas,3,226,1,Mercedes
+Perez,4,190,1,Red Bull
+Sainz,5,164.5,0,Ferrari
+Norris,6,160,0,Mclaren
+Leclerc,7,159,0,Ferrari
+Ricciardo,8,115,1,Mclaren
+Gasly,9,110,0,Alphatauri
+Alonso,10,81,0,Alpine
+Ocon,11,74,1,Alpine
+Vettel,12,43,0,Aston Martin
+Stroll,13,34,0,Aston Martin
+Tsunoda,14,32,0,Alphatauri
+Russell,15,16,0,Williams
+Raikkonen,16,10,0,Alfa
+Latifi,17,7,0,Williams
+Giovinazzi,18,3,0,Alfa
+Mick Schumacher,19,0,0,Haas
+Kubica,20,0,0,Alfa
+Mazepin,21,0,0,Haas

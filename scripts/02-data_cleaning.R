@@ -11,6 +11,7 @@
 library(tidyverse)
 library(readr)
 library(dplyr)
+library(stringr)
 
 #### Clean data ####
 
@@ -25,11 +26,22 @@ raw_lec_jeddah_2022 <- read_csv("data/raw_data/leclerc_laps_jeddah.csv")
 raw_lec_jeddah_2021 <- read_csv("data/raw_data/leclerc_laps_jeddah_2021.csv")
 
 #### Clean Standings 2022 DataSet ####
+raw_standings_2022 <- raw_standings_2022 %>%
+  mutate(driver_id = str_replace_all(driver_id, "_", " "),
+         constructor_id = str_replace_all(constructor_id, "_", " ")) %>%
+  mutate(driver_id = str_to_title(driver_id),
+         constructor_id = str_to_title(constructor_id))
 
 raw_standings_2022 <- raw_standings_2022 %>%
   rename(Driver = driver_id,`Position`= position, `Points` = points, `Wins`= wins, `Constructors`= constructor_id)
 
 #### Clean Standings 2021 DataSet ####
+
+raw_standings_2021 <- raw_standings_2021 %>%
+  mutate(driver_id = str_replace_all(driver_id, "_", " "),
+         constructor_id = str_replace_all(constructor_id, "_", " ")) %>%
+  mutate(driver_id = str_to_title(driver_id),
+         constructor_id = str_to_title(constructor_id))
 
 raw_standings_2021 <- raw_standings_2021 %>%
   rename(Driver = driver_id,`Position`= position, `Points` = points, `Wins`= wins, `Constructors`= constructor_id)
