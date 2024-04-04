@@ -27,8 +27,52 @@ Despite these debates, preliminary findings suggest that the 2022 regulations ha
 
 The remainder of the paper is organized as follows: @sec-data details the methodology and source data, including the use of the f1dataR package. @sec-results provides an analysis of the data with an emphasis on changes in the laptime and number of overtakes completed between 2021 and 2022 F1 cars. @sec-discussion discusses the specific challenges that came with the new regulations and on the balance between the intended objectives and the actual outcomes, offering recommendations for future regulatory adjustments. 
 
+\newpage
 
 # Data {#sec-data}
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: tbl-standings2022
+#| tbl-cap: F1 Driver Standings 2022
+library(tidyverse)
+library(readr)
+library(dplyr)
+library(kableExtra)
+
+
+standings_2022 <- read_csv("../data/analysis_data/standings_2022_cleaned.csv")
+
+standings_2022 |>
+ slice(1:10) |>
+  kable(digits = 1,
+    booktabs = TRUE,
+    linesep = ""
+  )
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: tbl-standings2021
+#| tbl-cap: F1 Driver Standings 2021
+library(tidyverse)
+library(readr)
+library(dplyr)
+library(kableExtra)
+
+standings_2021 <- read_csv("../data/analysis_data/standings_2021_cleaned.csv")
+
+standings_2021 |>
+ slice(1:10) |>
+  kable(digits = 1,
+    booktabs = TRUE,
+    linesep = ""
+  )
+```
 
 # Results {#sec-results}
 
