@@ -23,9 +23,9 @@ The core of the 2022 regulations centered around a shift to ground-effect aerody
 
 However, the transition was not without its challenges and controversies. Critics and experts argued that while the intention was to even the competition, the rapid and radical nature of these changes risked worsening existing disparities, at least in the short term, as teams adapted at different rates to the new regulations. Furthermore, concerns were raised about the potential for unintended consequences, such as increased racing incidents due to closer pack racing, and the possibility that the budget cap could stifle technological innovation.
 
-Despite these debates, preliminary findings suggest that the 2022 regulations have had a profound impact on Formula 1. Races have generally become more competitive, with a wider array of teams and drivers finding themselves in contention for podium finishes. The budget cap has also initiated a more strategic allocation of resources among teams, potentially leveling the competitive field over the longer term. This paper aims to examine the effects of the 2022 Formula 1 regulations, showing their impact on performance, competitive balance and race quality through lap times and number of overtakes completed between the 2021 and 2022 to see if these regulations either helped or worsened the sport.
+Despite these debates, preliminary findings suggest that the 2022 regulations have had a profound impact on Formula 1. Races have generally become more competitive, with a wider array of teams and drivers finding themselves in contention for podium finishes. The budget cap has also initiated a more strategic allocation of resources among teams, potentially leveling the competitive field over the longer term. The paper's estimand is that the 2022 Formula 1 regulations led to a significant increase in lap time in comparison to the previous time among the top drivers across different types of circuits but also increased the number of successful overtakes during races. This estimand aims to quantify the impact of the 2022 Formula 1 regulatory changes, providing a clear basis for evaluating their success in enhancing the sport's competitive balance and the quality of racing.
 
-The paper is organized as follows: @sec-data details the methodology and source data, including the use of the f1dataR package. @sec-results provides an analysis of the data with an emphasis on changes in the laptime and number of overtakes completed between 2021 and 2022 F1 cars. @sec-discussion discusses the specific challenges that came with the new regulations and on the balance between the intended objectives and the actual outcomes, offering recommendations for future regulatory adjustments. 
+The remainder of the paper is organized as follows: @sec-data details the methodology and source data, including the use of the f1dataR package. @sec-results provides an analysis of the data with an emphasis on changes in the laptime and number of overtakes completed between 2021 and 2022 F1 cars. @sec-discussion discusses the specific challenges that came with the new regulations and on the balance between the intended objectives and the actual outcomes, offering recommendations for future regulatory adjustments. 
 
 
 # Data {#sec-data}
@@ -33,6 +33,8 @@ The paper is organized as follows: @sec-data details the methodology and source 
 # Results {#sec-results}
 
 ```{r}
+#| label: fig-maxjeddah
+#| fig-cap: Max Verstappen Lap Times in Jeddah - 2021 vs. 2022
 #| echo: false
 #| warning: false
 #| message: false
@@ -56,7 +58,7 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
   geom_line() + # This will connect points with lines, showing the trend
   geom_point() + # This will plot individual lap times as points
   theme_minimal() + # A clean, minimal theme for the plot
-  labs(title = "Max Verstappen Lap Times in Jeddah - 2021 vs. 2022",
+  labs(
        x = "Lap Number",
        y = "Lap Time (Seconds)",
        color = "Season") +
@@ -66,6 +68,8 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
 ```
 
 ```{r}
+#| label: fig-lewisjeddah
+#| fig-cap: Lewis Hamilton Lap Times in Jeddah - 2021 vs. 2022
 #| echo: false
 #| warning: false
 #| message: false
@@ -89,7 +93,7 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
   geom_line() + # This will connect points with lines, showing the trend
   geom_point() + # This will plot individual lap times as points
   theme_minimal() + # A clean, minimal theme for the plot
-  labs(title = "Lewis Hamilton Lap Times in Jeddah - 2021 vs. 2022",
+  labs(
        x = "Lap Number",
        y = "Lap Time (Seconds)",
        color = "Season") +
