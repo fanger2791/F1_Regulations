@@ -249,7 +249,7 @@ write_csv(raw_lec_jeddah_2021, "data/analysis_data/leclerc_laps_jeddah_2021_clea
 write_csv(raw_ver_dutch_2022, "data/analysis_data/verstappen_laps_dutch_2022_cleaned.csv")
 write_csv(raw_ver_dutch_2021, "data/analysis_data/verstappen_laps_dutch_2021_cleaned.csv")
 write_csv(raw_ham_dutch_2022, "data/analysis_data/hamilton_laps_dutch_2022_cleaned.csv")
-write_csv(raw_ham_dutch_2021, "data/analysis_data/hamilton_laps_jdutch_2021_cleaned.csv")
+write_csv(raw_ham_dutch_2021, "data/analysis_data/hamilton_laps_dutch_2021_cleaned.csv")
 write_csv(raw_lec_dutch_2022, "data/analysis_data/leclerc_laps_dutch_2022_cleaned.csv")
 write_csv(raw_lec_dutch_2021, "data/analysis_data/leclerc_laps_dutch_2021_cleaned.csv")
 
