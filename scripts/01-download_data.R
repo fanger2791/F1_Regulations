@@ -55,16 +55,44 @@ leclerc_laps_jeddah <- laps_data_jeddah[laps_data_jeddah$driver_id == 'leclerc',
 # Load Data from the Jeddah Race in 2021 for Verstappen, Hamilton and Leclerc
 
 # Verstappen Lap Times Jeddah 2021
-laps_data_jeddah <- load_laps(season = 2021, round = 2)
+laps_data_jeddah <- load_laps(season = 2021, round = 21)
 verstappen_laps_jeddah_2021 <- laps_data_jeddah[laps_data_jeddah$driver_id == 'max_verstappen', ]
 
 # Hamilton Lap Times Jeddah 2021
-laps_data_jeddah <- load_laps(season = 2021, round = 2)
+laps_data_jeddah <- load_laps(season = 2021, round = 21)
 hamilton_laps_jeddah_2021 <- laps_data_jeddah[laps_data_jeddah$driver_id == 'hamilton', ]
 
 # Leclerc Lap Times Jeddah 2021
-laps_data_jeddah <- load_laps(season = 2021, round = 2)
+laps_data_jeddah <- load_laps(season = 2021, round = 21)
 leclerc_laps_jeddah_2021 <- laps_data_jeddah[laps_data_jeddah$driver_id == 'leclerc', ]
+
+# Load Data from the Dutch Race in 2022 for Verstappen, Hamilton and Leclerc
+
+# Verstappen Lap Times Dutch 2022
+laps_data_dutch <- load_laps(season = 2022, round = 15)
+verstappen_laps_dutch <- laps_data_dutch[laps_data_dutch$driver_id == 'max_verstappen', ]
+
+# Hamilton Lap Times Dutch 2022
+laps_data_dutch <- load_laps(season = 2022, round = 15)
+hamilton_laps_dutch <- laps_data_dutch[laps_data_dutch$driver_id == 'hamilton', ]
+
+# Leclerc Lap Times Dutch 2022
+laps_data_dutch <- load_laps(season = 2022, round = 15)
+leclerc_laps_dutch <- laps_data_dutch[laps_data_dutch$driver_id == 'leclerc', ]
+
+# Load Data from the Dutch Race in 2021 for Verstappen, Hamilton and Leclerc
+
+# Verstappen Lap Times Dutch 2021
+laps_data_dutch <- load_laps(season = 2021, round = 13)
+verstappen_laps_dutch_2021 <- laps_data_dutch[laps_data_dutch$driver_id == 'max_verstappen', ]
+
+# Hamilton Lap Times Dutch 2021
+laps_data_dutch <- load_laps(season = 2021, round = 13)
+hamilton_laps_dutch_2021 <- laps_data_dutch[laps_data_dutch$driver_id == 'hamilton', ]
+
+# Leclerc Lap Times Dutch 2021
+laps_data_dutch <- load_laps(season = 2021, round = 13)
+leclerc_laps_dutch_2021 <- laps_data_dutch[laps_data_dutch$driver_id == 'leclerc', ]
 
 
 #### Save data ####
@@ -81,5 +109,13 @@ write_csv(leclerc_laps_jeddah, "data/raw_data/leclerc_laps_jeddah.csv")
 write_csv(verstappen_laps_jeddah_2021, "data/raw_data/verstappen_laps_jeddah_2021.csv") 
 write_csv(hamilton_laps_jeddah_2021, "data/raw_data/hamilton_laps_jeddah_2021.csv") 
 write_csv(leclerc_laps_jeddah_2021, "data/raw_data/leclerc_laps_jeddah_2021.csv") 
+
+write_csv(verstappen_laps_dutch, "data/raw_data/verstappen_laps_dutch.csv") 
+write_csv(hamilton_laps_dutch, "data/raw_data/hamilton_laps_dutch.csv") 
+write_csv(leclerc_laps_dutch, "data/raw_data/leclerc_laps_dutch.csv") 
+
+write_csv(verstappen_laps_dutch_2021, "data/raw_data/verstappen_laps_dutch_2021.csv") 
+write_csv(hamilton_laps_dutch_2021, "data/raw_data/hamilton_laps_dutch_2021.csv") 
+write_csv(leclerc_laps_dutch_2021, "data/raw_data/leclerc_laps_dutch_2021.csv") 
 
          
