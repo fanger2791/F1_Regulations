@@ -141,7 +141,7 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
        x = "Lap Number",
        y = "Lap Time (Seconds)",
        color = "Season") +
-  scale_color_manual(values = c("2021" = "purple", "2022" = "yellow"))
+  scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))
 ```
 
 ```{r}
@@ -174,11 +174,109 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
        x = "Lap Number",
        y = "Lap Time (Seconds)",
        color = "Season") +
-  scale_color_manual(values = c("2021" = "red", "2022" = "green"))
+  scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
 ```
 
+```{r}
+#| label: fig-maxdutch
+#| fig-cap: Max Verstappen Lap Times in the Netherlands - 2021 vs. 2022
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+ver_dutch_2022 <- read_csv("../data/analysis_data/verstappen_laps_dutch_2022_cleaned.csv")
+ver_dutch_2021 <- read_csv("../data/analysis_data/verstappen_laps_dutch_2021_cleaned.csv")
+
+# Add a season column to each dataframe
+ver_dutch_2021$Season <- '2021'
+ver_dutch_2022$Season <- '2022'
+
+# Combine the two dataframes
+combined_df <- rbind(ver_dutch_2021, ver_dutch_2022)
+
+# Create the plot
+ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) +
+  geom_line() + # This will connect points with lines, showing the trend
+  geom_point() + # This will plot individual lap times as points
+  theme_minimal() + # A clean, minimal theme for the plot
+  labs(
+       x = "Lap Number",
+       y = "Lap Time (Seconds)",
+       color = "Season") +
+  scale_color_manual(values = c("2021" = "blue", "2022" = "red"))
 
 
+```
+
+```{r}
+#| label: fig-lewisdutch
+#| fig-cap: Lewis Hamilton Lap Times in the Netherlands - 2021 vs. 2022
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+ham_dutch_2022 <- read_csv("../data/analysis_data/hamilton_laps_dutch_2022_cleaned.csv")
+ham_dutch_2021 <- read_csv("../data/analysis_data/hamilton_laps_dutch_2021_cleaned.csv")
+
+# Add a season column to each dataframe
+ham_dutch_2021$Season <- '2021'
+ham_dutch_2022$Season <- '2022'
+
+# Combine the two dataframes
+combined_df <- rbind(ham_dutch_2021, ham_dutch_2022)
+
+# Create the plot
+ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) +
+  geom_line() + # This will connect points with lines, showing the trend
+  geom_point() + # This will plot individual lap times as points
+  theme_minimal() + # A clean, minimal theme for the plot
+  labs(
+       x = "Lap Number",
+       y = "Lap Time (Seconds)",
+       color = "Season") +
+  scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))
+```
+
+```{r}
+#| label: fig-lecdutch
+#| fig-cap: Charles Leclerc Lap Times in the Netherlands - 2021 vs. 2022
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+lec_dutch_2022 <- read_csv("../data/analysis_data/leclerc_laps_dutch_2022_cleaned.csv")
+lec_dutch_2021 <- read_csv("../data/analysis_data/leclerc_laps_dutch_2021_cleaned.csv")
+
+# Add a season column to each dataframe
+lec_dutch_2021$Season <- '2021'
+lec_dutch_2022$Season <- '2022'
+
+# Combine the two dataframes
+combined_df <- rbind(lec_dutch_2021, lec_dutch_2022)
+
+# Create the plot
+ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) +
+  geom_line() + # This will connect points with lines, showing the trend
+  geom_point() + # This will plot individual lap times as points
+  theme_minimal() + # A clean, minimal theme for the plot
+  labs(
+       x = "Lap Number",
+       y = "Lap Time (Seconds)",
+       color = "Season") +
+  scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
+```
 
 
 # Discussion {#sec-discussion}
