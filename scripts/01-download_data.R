@@ -38,6 +38,10 @@ schedule_2022 <- load_schedule(season = 2022)
 
 schedule_2021 <- load_schedule(season = 2021)
 
+# Load Verstappen Telemetry Data for Jeddah Qualifying in 2022
+
+verstappen_telemetry_jeddah <- load_driver_telemetry(season = 2022, round = 2, "Q", "VER", laps = "fastest")
+
 # Load Data from the Jeddah Race in 2022 for Verstappen, Hamilton and Leclerc
 
 # Verstappen Lap Times Jeddah 2022
@@ -101,6 +105,8 @@ write_csv(standings_2021, "data/raw_data/standings_2021.csv")
 
 write_csv(schedule_2022, "data/raw_data/schedule_2022.csv") 
 write_csv(schedule_2021, "data/raw_data/schedule_2021.csv")
+
+write_csv(verstappen_telemetry_jeddah, "data/raw_data/verstappen_telemetry_jeddah.csv") 
 
 write_csv(verstappen_laps_jeddah, "data/raw_data/verstappen_laps_jeddah.csv") 
 write_csv(hamilton_laps_jeddah, "data/raw_data/hamilton_laps_jeddah.csv") 
