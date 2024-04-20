@@ -74,6 +74,32 @@ standings_2021 |>
   )
 ```
 
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: tbl-circuits
+#| tbl-cap: F1 Circuits Analysis
+library(tidyverse)
+library(kableExtra)
+
+variable_data <- data.frame( 
+  Circuit_Name = c("Saudi Arabia", 
+               "Netherlands"), 
+  Track_Type = c("Top Speed",
+                  "High Downforce"), 
+  Tyre_Wear = c("High", 
+              "Low")
+)
+variable_data |>
+ slice(1:10) |>
+  kable(digits = 1,
+    booktabs = TRUE,
+    linesep = ""
+  )
+```
+
+
 # Results {#sec-results}
 
 ```{r}
@@ -275,6 +301,155 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
        x = "Lap Number",
        y = "Lap Time (Seconds)",
        color = "Season") +
+  scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
+```
+
+```{r}
+#| label: fig-overtakes
+#| fig-cap: Number of Overtakes 2021 v 2022
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+data <- read.csv("../data/raw_data/Overtaking_Season_Averages.csv")
+
+# Filter data for the years 2021 and 2022
+filtered_data <- data[data$Season %in% c(2021, 2022), ]
+
+ggplot(filtered_data, aes(x = as.factor(Season), y = Overtakes, fill = "Total Overtakes")) +
+    geom_bar(stat = "identity", color = "black", fill = "blue") +
+    labs(title = "Total Overtakes (2021-2022)",
+         x = "Season", y = "Number of Overtakes") +
+    theme_minimal()
+```
+
+
+```{r}
+#| label: fig-overtakes
+#| fig-cap: Number of Overtakes Seen on TV 2021 v 2022
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+data <- read.csv("../data/raw_data/Overtaking_Season_Averages.csv")
+
+# Filter data for the years 2021 and 2022
+filtered_data <- data[data$Season %in% c(2021, 2022), ]
+
+ggplot(filtered_data, aes(x = as.factor(Season), y = Overtakes.on.TV, fill = "Overtakes on TV")) +
+    geom_bar(stat = "identity", color = "black", fill = "red") +
+    labs(title = "Overtakes on TV (2021-2022)",
+         x = "Season", y = "Number of Overtakes on TV") +
+    theme_minimal()
+```
+
+```{r}
+#| label: fig-verspeed-jeddah
+#| fig-cap: Verstappen Speed Comparison - Qualifying Jeddah 2022 vs 2021
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+ver_telemetry_data_jeddah_2022 <- read.csv("../data/raw_data/verstappen_telemetry_jeddah.csv")
+ver_telemetry_data_jeddah_2021 <- read.csv("../data/raw_data/verstappen_telemetry_jeddah_2021.csv")
+
+# Assuming telemetry_data_2022 and telemetry_data_2021 are your datasets
+ver_telemetry_data_jeddah_2022$season <- "2022"
+ver_telemetry_data_jeddah_2021$season <- "2021"
+
+# Combine the datasets
+combined_data <- rbind(ver_telemetry_data_jeddah_2022, ver_telemetry_data_jeddah_2021)
+
+# Convert session_time to a numeric type if not already
+combined_data$session_time <- as.numeric(combined_data$session_time)
+
+# Plotting
+ggplot(combined_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
+  scale_color_manual(values = c("2021" = "red", "2022" = "blue"))
+
+```
+
+```{r}
+#| label: fig-hamspeed-jeddah
+#| fig-cap: Hamilton Speed Comparison - Qualifying Jeddah 2022 vs 2021
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+ham_telemetry_data_jeddah_2022 <- read.csv("../data/raw_data/hamilton_telemetry_jeddah.csv")
+ham_telemetry_data_jeddah_2021 <- read.csv("../data/raw_data/hamilton_telemetry_jeddah_2021.csv")
+
+# Assuming telemetry_data_2022 and telemetry_data_2021 are your datasets
+ham_telemetry_data_jeddah_2022$season <- "2022"
+ham_telemetry_data_jeddah_2021$season <- "2021"
+
+# Combine the datasets
+combined_data <- rbind(ham_telemetry_data_jeddah_2022, ham_telemetry_data_jeddah_2021)
+
+# Convert session_time to a numeric type if not already
+combined_data$session_time <- as.numeric(combined_data$session_time)
+
+# Plotting
+ggplot(combined_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
+  scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))
+```
+```{r}
+#| label: fig-lecspeed-jeddah
+#| fig-cap: Leclerc Speed Comparison - Qualifying Jeddah 2022 vs 2021
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+lec_telemetry_data_jeddah_2022 <- read.csv("../data/raw_data/leclerc_telemetry_jeddah.csv")
+lec_telemetry_data_jeddah_2021 <- read.csv("../data/raw_data/leclerc_telemetry_jeddah_2021.csv")
+
+# Assuming telemetry_data_2022 and telemetry_data_2021 are your datasets
+lec_telemetry_data_jeddah_2022$season <- "2022"
+lec_telemetry_data_jeddah_2021$season <- "2021"
+
+# Combine the datasets
+combined_data <- rbind(lec_telemetry_data_jeddah_2022, lec_telemetry_data_jeddah_2021)
+
+# Convert session_time to a numeric type if not already
+combined_data$session_time <- as.numeric(combined_data$session_time)
+
+# Plotting
+ggplot(combined_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
   scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
 ```
 
