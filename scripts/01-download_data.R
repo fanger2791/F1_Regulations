@@ -62,6 +62,38 @@ leclerc_telemetry_jeddah <- load_driver_telemetry(season = 2022, round = 2, "Q",
 
 leclerc_telemetry_jeddah_2021 <- load_driver_telemetry(season = 2021, round = 21, "Q", "LEC", laps = "fastest")
 
+
+
+
+# Load Verstappen Telemetry Data for Dutch Qualifying in 2022
+
+verstappen_telemetry_dutch <- load_driver_telemetry(season = 2022, round = 15, "Q", "VER", laps = "fastest")
+
+# Load Verstappen Telemetry Data for Dutch Qualifying in 2021
+
+verstappen_telemetry_dutch_2021 <- load_driver_telemetry(season = 2021, round = 13, "Q", "VER", laps = "fastest")
+
+# Load Hamilton Telemetry Data for Dutch Qualifying in 2022
+
+hamilton_telemetry_dutch <- load_driver_telemetry(season = 2022, round = 15, "Q", "HAM", laps = "fastest")
+
+# Load Hamilton Telemetry Data for Dutch Qualifying in 2021
+
+hamilton_telemetry_dutch_2021 <- load_driver_telemetry(season = 2021, round = 13, "Q", "HAM", laps = "fastest")
+
+# Load Leclerc Telemetry Data for Dutch Qualifying in 2022
+
+leclerc_telemetry_dutch <- load_driver_telemetry(season = 2022, round = 15, "Q", "LEC", laps = "fastest")
+
+# Load Leclerc Telemetry Data for Dutch Qualifying in 2021
+
+leclerc_telemetry_dutch_2021 <- load_driver_telemetry(season = 2021, round = 13, "Q", "LEC", laps = "fastest")
+
+
+
+
+
+
 # Load Data from the Jeddah Race in 2022 for Verstappen, Hamilton and Leclerc
 
 # Verstappen Lap Times Jeddah 2022
@@ -132,6 +164,13 @@ write_csv(verstappen_telemetry_jeddah, "data/raw_data/hamilton_telemetry_jeddah.
 write_csv(verstappen_telemetry_jeddah_2021, "data/raw_data/hamilton_telemetry_jeddah_2021.csv")
 write_csv(verstappen_telemetry_jeddah, "data/raw_data/leclerc_telemetry_jeddah.csv")
 write_csv(verstappen_telemetry_jeddah_2021, "data/raw_data/leclerc_telemetry_jeddah_2021.csv")
+
+write_csv(verstappen_telemetry_dutch, "data/raw_data/verstappen_telemetry_dutch.csv")
+write_csv(verstappen_telemetry_dutch_2021, "data/raw_data/verstappen_telemetry_dutch_2021.csv")
+write_csv(verstappen_telemetry_dutch, "data/raw_data/hamilton_telemetry_dutch.csv")
+write_csv(verstappen_telemetry_dutch_2021, "data/raw_data/hamilton_telemetry_dutch_2021.csv")
+write_csv(verstappen_telemetry_dutch, "data/raw_data/leclerc_telemetry_dutch.csv")
+write_csv(verstappen_telemetry_dutch_2021, "data/raw_data/leclerc_telemetry_dutch_2021.csv")
 
 write_csv(verstappen_laps_jeddah, "data/raw_data/verstappen_laps_jeddah.csv") 
 write_csv(hamilton_laps_jeddah, "data/raw_data/hamilton_laps_jeddah.csv") 
