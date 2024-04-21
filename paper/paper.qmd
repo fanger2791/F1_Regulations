@@ -746,9 +746,9 @@ plot1 <- ggplot(combined_data, aes(x = time, y = speed, color = season)) +
   theme_minimal() +
   scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
 
-# Filter data around 60 seconds (between 55 and 65 seconds)
+
 filtered_data <- combined_data %>%
-  filter(time >= 55 & time <= 65)
+  filter(time >= 45 & time <= 60)
 
 # Plotting
 plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
@@ -785,7 +785,6 @@ These changes not only reflect an awareness of Formula 1's environmental footpri
 \newpage
 
 # References
-
 
 
 
