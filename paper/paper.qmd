@@ -25,7 +25,7 @@ However, the transition was not without its challenges and controversies. Critic
 
 Despite these debates, preliminary findings suggest that the 2022 regulations have had a profound impact on Formula 1. Races have generally become more competitive, with a wider array of teams and drivers finding themselves in contention for podium finishes. The budget cap has also initiated a more strategic allocation of resources among teams, potentially leveling the competitive field over the longer term. The paper's estimand is whether the 2022 Formula 1 regulations led to a significant increase in lap time in comparison to the previous time among the top drivers across different types of circuits but also increased the number of successful overtakes during races. We aim to quantify the impact of the 2022 Formula 1 regulatory changes, providing a clear basis for evaluating their success in enhancing the sport's competitive balance and the quality of racing.
 
-The remainder of the paper is organized as follows: @sec-data details the methodology and source data, including the use of the f1dataR package. @sec-results provides an analysis of the data with an emphasis on changes in the laptime and number of overtakes completed between 2021 and 2022 F1 cars. @sec-discussion discusses the specific challenges that came with the new regulations and on the balance between the intended objectives and the actual outcomes, offering recommendations for future regulatory adjustments. 
+The remainder of the paper is organized as follows: @sec-data details the methodology and source data, including the use of the f1dataR package. @sec-results provides an analysis of the data with an emphasis on changes in the laptime, speed and number of overtakes completed between 2021 and 2022 F1 cars. @sec-discussion discusses the specific challenges that came with the new regulations and on the balance between the intended objectives and the actual outcomes, offering recommendations for future regulatory adjustments. 
 
 # Data {#sec-data}
 
@@ -82,11 +82,15 @@ The Formula 1 driver standings from 2021 to 2022 as seen in @tbl-standings2022 a
 
 ## Method of Analysis
 
-To analyze the impact of track characteristics on Formula 1 car performance, specifically comparing the lap times and speeds at the Saudi Arabia Jeddah Corniche Circuit (a top-speed track) and the Netherlands' Circuit Zandvoort (a high-downforce track) as seen in @tbl-circuits for the 2021 and 2022 seasons, a structured approach will be employed. Initially, data will be gathered using the f1dataR package, which extracts detailed information about lap times and speeds from the Ergast API. This dataset will include all drivers' performances during both qualifying and race sessions.
+To analyze the impact of track characteristics on Formula 1 car performance, specifically comparing the lap times and speeds at the Saudi Arabia Jeddah Corniche Circuit (a top-speed track) and the Netherlands' Circuit Zandvoort (a high-downforce track) as seen in @tbl-circuits for the 2021 and 2022 seasons, a structured approach will be employed. Initially, data will be gathered using the f1dataR package, which extracts detailed information about lap times and speeds from the Ergast API. This dataset will include drivers' performances during both qualifying and race sessions.
 
 The analysis will begin with descriptive statistics to outline the basic trends in the ranges of lap times and top speeds for each session across both tracks and years. This provides a preliminary view of the data and helps identify any outliers or anomalies. For deeper insights, a comparative analysis will be conducted between the two tracks and between the two years. This involves comparing average speeds and lap times to determine how the distinct characteristics of each track influence performance and how performance metrics have evolved from one year to the next.
 
-Finally, the results will be visually represented through various graphs and plots to illustrate variability and distribution. This comprehensive approach ensures that the analysis not only provides quantitative insights into F1 car performance under varying track conditions but also presents these findings in an accessible format, aiding in the interpretation and discussion of how different track characteristics influence race strategy and outcomes.
+To enhance the method of analysis for comparing lap times and speeds at the Jeddah Corniche Circuit and Circuit Zandvoort over the 2021 and 2022 Formula 1 seasons, we will focus on three top drivers: Max Verstappen, Lewis Hamilton, and Charles Leclerc. Including these specific drivers in the study adds a layer of depth by enabling comparisons not just between tracks and years, but also among leading competitors known for their distinctive driving styles and performance under varying circuit conditions.
+
+The analysis will proceed by segmenting the data to include only the laps completed by Verstappen, Hamilton, and Leclerc. This will allow us to conduct a detailed examination of how each driver's performance varies across the two contrasting track types and over the two seasons. 
+
+Finally, the results will be visually represented through various graphs and plots to illustrate variability and distribution. This focused approach on Verstappen, Hamilton, and Leclerc will provide richer insights into driver-specific strategies and skills, adding substantial value to the overall analysis of Formula 1 performances across varied circuit designs. This comparative layer will help in understanding how individual capabilities and team strategies play out in high-speed vs. high-downforce conditions, thereby enriching the conclusions drawn from the data.
 
 
 ```{r}
@@ -127,6 +131,12 @@ The data cleaning process for these datasets involves several steps to ensure th
 
 # Results {#sec-results}
 
+## Lap Time Comparison Between 2021 and 2022 in Jeddah - Max Verstappen
+
+@fig-maxjeddah presents Max Verstappen's lap times in Jeddah for two consecutive Formula 1 seasons, 2021 and 2022. The laps are numbered from 1 to over 50 on the horizontal axis, while the vertical axis shows the lap time in seconds. In 2021, denoted by the blue line, there's a sharp decrease in lap times from the first lap, stabilizing around the 93-second mark, suggesting a rapid adjustment to the track or conditions before finding consistency. Notably, there's less variation in lap times for this season, with most laps being clustered closely around the 93 to 95-second range, indicating a relatively steady performance.
+
+In contrast, the 2022 season, shown in red, exhibits more variability, with lap times generally higher and more erratic. Starting around the 97-second mark, these lap times show greater fluctuations, including some particularly slow laps that spike above 95 seconds, which could indicate instances of traffic, mistakes, or other delays. Overall, the performance in 2022 seems to be less consistent and slower compared to 2021. The distinct difference in patterns between the two seasons could be attributed to changes in car performance, track conditions, strategic decisions, or regulations affecting the car's capabilities.
+
 ```{r}
 #| label: fig-maxjeddah
 #| fig-cap: Max Verstappen Lap Times in Jeddah - 2021 vs. 2022
@@ -162,6 +172,14 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
 
 ```
 
+## Lap Time Comparison Between 2021 and 2022 in Jeddah - Lewis Hamilton
+
+@fig-lewisjeddah tracks Lewis Hamilton's lap times at the Jeddah circuit over two different seasons, 2021 and 2022. In 2021, represented by the purple line, we observe a swift decrease in lap times at the start, steadying to just below 93 seconds and maintaining a relatively consistent pace with minor fluctuations throughout the race. The 2021 data suggests a quick adaptation to track conditions, with Hamilton managing to keep a tight window of performance throughout his laps.
+
+Comparatively, the 2022 season, indicated by the yellow line, shows a different performance profile. The lap times start higher than in 2021, showing Hamilton's laps initially hover around 97 seconds. There is a notable increase in variability, with spikes suggesting laps significantly slower than the general trend. These spikes could imply various events, such as dealing with traffic, pitting, or possible errors. Towards the latter part of the graph, the lap times improve, hinting at a potential adaptation or strategic changes during the race.
+
+The broader range of lap times in 2022 and the overall slower laps compared to 2021 might be influenced by the aforementioned regulation changes. These changes could have affected car handling and performance characteristics, necessitating a period of adaptation. Additionally, it’s possible that the 2022 Mercedes car may not have been as well-suited to the demands of the Jeddah circuit as the previous year's model, or that team strategies were different in response to the new regulations and competition.
+
 ```{r}
 #| label: fig-lewisjeddah
 #| fig-cap: Lewis Hamilton Lap Times in Jeddah - 2021 vs. 2022
@@ -195,6 +213,14 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
   scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))
 ```
 
+## Lap Time Comparison Between 2021 and 2022 in Jeddah - Charles Leclerc
+
+@fig-lecjeddah illustrates Charles Leclerc's lap times at the Jeddah circuit, contrasting his performance across the 2021 and 2022 Formula 1 seasons. In the 2021 season, shown in red, we observe an initial spike in lap times, which quickly reduces and then follows a trend with some fluctuation around the 95-second mark, with several outliers suggesting instances of slower laps. The spread of lap times in 2021 is relatively broad, which may reflect varying conditions or incidents during the race that affected performance.
+
+For the 2022 season, represented by the green line, the initial lap times are also high but quickly improve. After the initial laps, the times are mostly clustered around the 95-second mark, similar to the 2021 season, but with less variability. Notably, towards the end of the session, there is a sharp drop in lap times followed by a significant spike. The less volatile lap times throughout most of the race compared to 2021 might suggest better consistency or adaptation to the 2022 car's handling.
+
+It's evident that in both seasons, there are moments of performance drops, which are likely due to non-competitive laps such as pit stops or laps following safety car periods. The general improvement in consistency in 2022, despite the new regulations, could indicate that Leclerc and his team were able to adapt effectively to the changes, possibly benefiting from the new aerodynamics rules designed to aid in car stability and handling. The sharp variations, especially in the 2022 data, could be indicative of specific incidents affecting those laps or strategic choices that temporarily influenced lap time performance.
+
 ```{r}
 #| label: fig-lecjeddah
 #| fig-cap: Charles Leclerc Lap Times in Jeddah - 2021 vs. 2022
@@ -227,6 +253,9 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
        color = "Season") +
   scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
 ```
+
+## Lap Time Comparison Between 2021 and 2022 in the Netherlands - Max Verstappen
+
 
 ```{r}
 #| label: fig-maxdutch
@@ -263,6 +292,8 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
 
 ```
 
+## Lap Time Comparison Between 2021 and 2022 in the Netherlands - Lewis Hamilton
+
 ```{r}
 #| label: fig-lewisdutch
 #| fig-cap: Lewis Hamilton Lap Times in the Netherlands - 2021 vs. 2022
@@ -295,6 +326,8 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
        color = "Season") +
   scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))
 ```
+
+## Lap Time Comparison Between 2021 and 2022 in the Netherlands - Charles Leclerc
 
 ```{r}
 #| label: fig-lecdutch
@@ -329,10 +362,13 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
   scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
 ```
 
+## Comparison of Number of Overtakes throughout each Season 2021 vs 2022
+
+@fig-overtakes compares the number of overtakes during the Formula 1 racing seasons of 2021 and 2022, with Chart A focusing on total overtakes and Chart B on overtakes shown on TV. In both charts, there is a noticeable increase in the number of overtakes in the 2022 season compared to 2021.
 
 ```{r}
 #| label: fig-overtakes
-#| fig-cap: Number of Overtakes Seen on TV 2021 v 2022
+#| fig-cap: Number of Overtakes Throughout Each Season 2021 v 2022
 #| echo: false
 #| warning: false
 #| message: false
@@ -340,18 +376,76 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
 library(ggplot2)
 library(readr)
 library(dplyr)
+library(gridExtra)
 
 data <- read.csv("../data/raw_data/Overtaking_Season_Averages.csv")
 
 # Filter data for the years 2021 and 2022
 filtered_data <- data[data$Season %in% c(2021, 2022), ]
 
-ggplot(filtered_data, aes(x = as.factor(Season), y = Overtakes.on.TV, fill = "Overtakes on TV")) +
+plot1 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Overtakes, fill = "Total Overtakes")) +
+    geom_bar(stat = "identity", color = "black", fill = "blue") +
+    labs(
+         x = "Season", y = "Number of Overtakes") +
+    theme_minimal()+
+  labs(tag = "A")
+
+plot2 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Overtakes.on.TV, fill = "Overtakes on TV")) +
     geom_bar(stat = "identity", color = "black", fill = "red") +
-    labs(title = "Overtakes on TV (2021-2022)",
+    labs(
          x = "Season", y = "Number of Overtakes on TV") +
-    theme_minimal()
+    theme_minimal()+
+  labs(tag = "B")
+
+grid.arrange(plot1, plot2, ncol = 2, nrow = 1)
+
+
 ```
+
+## Comparison of Average Number of Overtakes throughout each Season 2021 vs 2022
+
+@fig-averageovertakes represent the average number of overtakes per race in the Formula 1 seasons of 2021 and 2022. Chart A shows a slight increase in the average number of overtakes from the 2021 to the 2022 season, while Chart B illustrates a more noticeable increase in the average number of overtakes broadcast on TV during the same period.
+
+```{r}
+#| label: fig-averageovertakes
+#| fig-cap: Average Number of Overtakes Per Race 2021 v 2022
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(gridExtra)
+
+data <- read.csv("../data/raw_data/Overtaking_Season_Averages.csv")
+
+# Filter data for the years 2021 and 2022
+filtered_data <- data[data$Season %in% c(2021, 2022), ]
+
+plot1 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Average, fill = "Average")) +
+    geom_bar(stat = "identity", color = "black", fill = "purple") +
+    labs(
+         x = "Season", y = "Average Number of Overtakes") +
+    theme_minimal()+
+  labs(tag = "A")
+
+plot2 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Average.on.TV, fill = "Average on TV")) +
+    geom_bar(stat = "identity", color = "black", fill = "green") +
+    labs(
+         x = "Season", y = "Average Number of Overtakes on TV") +
+    theme_minimal()+
+  labs(tag = "B")
+
+grid.arrange(plot1, plot2, ncol = 2, nrow = 1)
+
+```
+
+## How the regulations had an effect on total and average number of overtakes
+
+This increase can be attributed to the major regulatory changes introduced in 2022, which aimed at promoting closer racing and more overtaking opportunities. The 2022 regulations involved a shift to ground-effect aerodynamics, allowing cars to follow each other more closely without losing significant downforce, which is crucial for maintaining speed in corners. Additionally, changes were made to the car's wings and wheel design to reduce the aerodynamic wake that can disturb the airflow for following cars, further facilitating overtaking maneuvers.
+
+As a result, the data suggests that these regulations had their intended effect, leading to more competitive races with increased overtaking, which is reflected in both the total number of overtakes and those broadcast on television. The changes not only improved the chances of overtaking but also likely enhanced the viewing experience for fans, as reflected in the consistency of overtakes shown on TV, which closely aligns with the actual increase in overtakes. This might indicate that more of the action was deemed broadcast-worthy, potentially due to the more dynamic and visually engaging nature of the overtakes under the new regulations.
 
 ```{r}
 #| label: fig-verspeed-jeddah
@@ -378,7 +472,7 @@ combined_data <- rbind(ver_telemetry_data_jeddah_2022, ver_telemetry_data_jeddah
 combined_data$session_time <- as.numeric(combined_data$session_time)
 
 # Plotting
-ggplot(combined_data, aes(x = time, y = speed, color = season)) +
+plot1 <- ggplot(combined_data, aes(x = time, y = speed, color = season)) +
   geom_line() +
   labs(title = "Comparison of Speeds: 2021 vs 2022",
        x = "Session Time (s)",
@@ -386,7 +480,23 @@ ggplot(combined_data, aes(x = time, y = speed, color = season)) +
   theme_minimal() +
   scale_color_manual(values = c("2021" = "red", "2022" = "blue"))
 
+# Filter data around 60 seconds (between 55 and 65 seconds)
+filtered_data <- combined_data %>%
+  filter(time >= 55 & time <= 65)
+
+# Plotting
+plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022 at Final Corner",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
+  scale_color_manual(values = c("2021" = "red", "2022" = "blue"))+
+  labs(tag = "B")
+
+grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
 ```
+
 
 ```{r}
 #| label: fig-hamspeed-jeddah
@@ -413,14 +523,32 @@ combined_data <- rbind(ham_telemetry_data_jeddah_2022, ham_telemetry_data_jeddah
 combined_data$session_time <- as.numeric(combined_data$session_time)
 
 # Plotting
-ggplot(combined_data, aes(x = time, y = speed, color = season)) +
+plot1 <- ggplot(combined_data, aes(x = time, y = speed, color = season)) +
   geom_line() +
   labs(title = "Comparison of Speeds: 2021 vs 2022",
        x = "Session Time (s)",
        y = "Speed (km/h)") +
   theme_minimal() +
   scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))
+
+# Filter data around 60 seconds (between 55 and 65 seconds)
+filtered_data <- combined_data %>%
+  filter(time >= 55 & time <= 65)
+
+# Plotting
+plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022 at Final Corner",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
+  scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))+
+  labs(tag = "B")
+
+grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
+
 ```
+
 ```{r}
 #| label: fig-lecspeed-jeddah
 #| fig-cap: Leclerc Speed Comparison - Qualifying Jeddah 2022 vs 2021
@@ -446,13 +574,29 @@ combined_data <- rbind(lec_telemetry_data_jeddah_2022, lec_telemetry_data_jeddah
 combined_data$session_time <- as.numeric(combined_data$session_time)
 
 # Plotting
-ggplot(combined_data, aes(x = time, y = speed, color = season)) +
+plot1 <- ggplot(combined_data, aes(x = time, y = speed, color = season)) +
   geom_line() +
   labs(title = "Comparison of Speeds: 2021 vs 2022",
        x = "Session Time (s)",
        y = "Speed (km/h)") +
   theme_minimal() +
   scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
+
+# Filter data around 60 seconds (between 55 and 65 seconds)
+filtered_data <- combined_data %>%
+  filter(time >= 55 & time <= 65)
+
+# Plotting
+plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022 at Final Corner",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
+  scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))+
+  labs(tag = "B")
+
+grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
 ```
 
 
