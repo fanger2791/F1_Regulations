@@ -27,9 +27,13 @@ Despite these debates, preliminary findings suggest that the 2022 regulations ha
 
 The remainder of the paper is organized as follows: @sec-data details the methodology and source data, including the use of the f1dataR package. @sec-results provides an analysis of the data with an emphasis on changes in the laptime and number of overtakes completed between 2021 and 2022 F1 cars. @sec-discussion discusses the specific challenges that came with the new regulations and on the balance between the intended objectives and the actual outcomes, offering recommendations for future regulatory adjustments. 
 
-\newpage
-
 # Data {#sec-data}
+
+## Source Data
+
+The f1dataR [@f1dataR] package in R is designed specifically for Formula 1 enthusiasts and data analysts who wish to examine the statistical and historical aspects of Formula 1 racing. This package provides a comprehensive setf functions that facilitate the extraction and manipulation of Formula 1 data directly from the Ergast API, which is a widely recognized source for F1 statistics. With f1dataR, users can easily access detailed race results, driver standings, constructor details, and much more, across the history of F1 competitions.
+
+## 2021 Standings vs 2022 Standings 
 
 ```{r}
 #| echo: false
@@ -74,6 +78,17 @@ standings_2021 |>
   )
 ```
 
+The Formula 1 driver standings from 2021 to 2022 as seen in @tbl-standings2022 and @tbl-standings2021 show a notable progression and shift in team and driver performance. In 2021, Max Verstappen secured the championship with a 7.5-point lead over Lewis Hamilton, with 10 wins to Hamilton's 8. Mercedes appeared strong, with both Hamilton and Bottas in the top three. Come 2022, Verstappen further solidified his dominance by extending his lead to a substantial 146 points and achieving a record 15 wins in a single season. Notably, Ferrari improved their standing with Leclerc finishing second, and Red Bull maintained their position as the team to beat with Perez also featuring in the top three. The 2022 season's F1 regulations, which introduced major changes to the car design with an emphasis on ground-effect aerodynamics, appear to have shaken up the order slightly. This aimed to allow cars to follow each other more closely and to increase overtaking opportunities. The impact of these changes can be inferred from the reshuffling seen in team performance. Mercedes, for example, slipped from the top spot as Ferrari emerged as a stronger challenger to Red Bull. The midfield battle also saw shifts, with drivers like Ocon and Alonso gaining points, indicating that the new regulations might have provided an opportunity for teams to reset and challenge the established order.
+
+## Method of Analysis
+
+To analyze the impact of track characteristics on Formula 1 car performance, specifically comparing the lap times and speeds at the Saudi Arabia Jeddah Corniche Circuit (a top-speed track) and the Netherlands' Circuit Zandvoort (a high-downforce track) as seen in @tbl-circuits for the 2021 and 2022 seasons, a structured approach will be employed. Initially, data will be gathered using the f1dataR package, which extracts detailed information about lap times and speeds from the Ergast API. This dataset will include all drivers' performances during both qualifying and race sessions.
+
+The analysis will begin with descriptive statistics to outline the basic trends in the ranges of lap times and top speeds for each session across both tracks and years. This provides a preliminary view of the data and helps identify any outliers or anomalies. For deeper insights, a comparative analysis will be conducted between the two tracks and between the two years. This involves comparing average speeds and lap times to determine how the distinct characteristics of each track influence performance and how performance metrics have evolved from one year to the next.
+
+Finally, the results will be visually represented through various graphs and plots to illustrate variability and distribution. This comprehensive approach ensures that the analysis not only provides quantitative insights into F1 car performance under varying track conditions but also presents these findings in an accessible format, aiding in the interpretation and discussion of how different track characteristics influence race strategy and outcomes.
+
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -99,6 +114,16 @@ variable_data |>
   )
 ```
 
+
+## Data Limitations
+
+While the f1dataR [@f1dataR] package offers valuable resources for analyzing Formula 1 data, it does come with certain limitations that users need to consider. First, the quality and completeness of the data are dependent on the Ergast API, which means any missing or inaccurately recorded data in the API will be reflected in the outputs obtained through f1dataR. Additionally, the API's update frequency might not align with real-time event conclusions, potentially leading to delays in accessing the most current race data. The historical data provided may also have gaps, particularly from the earlier years of Formula 1 racing, which could limit analyses of long-term trends or comparisons over extended periods. Moreover, the package may not include certain types of data, such as detailed telemetry or in-depth weather conditions, which could be crucial for more nuanced analyses or predictive modeling. Therefore, while f1dataR facilitates access to a wealth of F1 data, users must be mindful of these constraints when conducting comprehensive or real-time analyses.
+
+## Data Cleaning
+
+R [@citeR] was the language and environment used for this paper as well as throughout the data cleaning process, with different packages such as tidyverse [@tidyverse], ggplot2 [@ggplot2], dplyr [@dplyr], tidyr [@tidyr], knitr [@knitr], janitor [@janitor], lubridate [@lubridate] packages. 
+
+The data cleaning process for these datasets involves several steps to ensure the data is accurate and suitable for analysis. Initially, the dataset's structure is reviewed to verify data types and identify any inconsistencies. This is crucial for understanding the data's composition and guiding subsequent transformations. Key transformations include converting relevant columns to appropriate data types, such as changing lap times to numeric values for analytical operations and categorizing seasons as factors for grouped analyses. Such transformations are essential for maintaining data integrity and ensuring computational accuracy. A critical cleaning step involves filtering out anomalies, specifically laps exceeding 100 seconds, based on the assumption that these represent non-standard race conditions like pit stops or errors. This step helps focus the dataset on typical racing performance. Further, the dataset undergoes a purging of incomplete records, removing any rows with missing data to enhance the robustness of the statistical analysis. Finally, renaming columns to more descriptive terms facilitates easier understanding and manipulation of the data, aligning with best practices in data documentation and usability.
 
 # Results {#sec-results}
 
@@ -304,29 +329,6 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
   scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
 ```
 
-```{r}
-#| label: fig-overtakes
-#| fig-cap: Number of Overtakes 2021 v 2022
-#| echo: false
-#| warning: false
-#| message: false
-
-library(ggplot2)
-library(readr)
-library(dplyr)
-
-data <- read.csv("../data/raw_data/Overtaking_Season_Averages.csv")
-
-# Filter data for the years 2021 and 2022
-filtered_data <- data[data$Season %in% c(2021, 2022), ]
-
-ggplot(filtered_data, aes(x = as.factor(Season), y = Overtakes, fill = "Total Overtakes")) +
-    geom_bar(stat = "identity", color = "black", fill = "blue") +
-    labs(title = "Total Overtakes (2021-2022)",
-         x = "Season", y = "Number of Overtakes") +
-    theme_minimal()
-```
-
 
 ```{r}
 #| label: fig-overtakes
@@ -455,6 +457,8 @@ ggplot(combined_data, aes(x = time, y = speed, color = season)) +
 
 
 # Discussion {#sec-discussion}
+
+\newpage
 
 # References
 
