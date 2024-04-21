@@ -256,6 +256,9 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
 
 ## Lap Time Comparison Between 2021 and 2022 in the Netherlands - Max Verstappen
 
+@fig-maxdutch compares lap times achieved by Max Verstappen in the Netherlands for two consecutive Formula 1 seasons, 2021 and 2022. Each point on the graph represents the lap time for a specific lap number during the race. From the pattern of the data points, it can be observed that the majority of lap times for both years are closely clustered at the lower end of the lap time scale, which indicates consistent performance across the majority of the laps. 
+
+In comparing the two seasons, the 2022 lap times appear to be more volatile with higher spikes, suggesting that there were more instances where Verstappen had to slow down significantly. This might be reflective of strategic elements such as pit stop timing or could be indicative of the effects of the new regulations on race strategy and car performance. Additionally, the 2022 data points generally seem to trend slightly higher than those of 2021, which imply that the lap times were slower in 2022 on average.
 
 ```{r}
 #| label: fig-maxdutch
@@ -294,6 +297,10 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
 
 ## Lap Time Comparison Between 2021 and 2022 in the Netherlands - Lewis Hamilton
 
+@fig-lewisdutch shows Lewis Hamilton's lap times in the Netherlands for the 2021 and 2022 Formula 1 seasons. Each dot represents a lap time for a corresponding lap number.
+
+Looking at the 2021 season, represented by the purple dots, we see a consistent baseline of lap times with occasional spikes. These spikes likely indicate laps where Hamilton pitted, encountered traffic, or reduced speed for safety cars or yellow flags. The baseline lap time is quite stable, suggesting consistent performance throughout the race when unaffected by external factors. The 2022 season, shown in yellow, follows a similar pattern of consistency but with fewer and less pronounced spikes. Moreover, the baseline lap times in 2022 appear to be consistently lower than in 2021. This could suggest an improved car performance or a better adaptation to the track conditions.
+
 ```{r}
 #| label: fig-lewisdutch
 #| fig-cap: Lewis Hamilton Lap Times in the Netherlands - 2021 vs. 2022
@@ -328,6 +335,14 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
 ```
 
 ## Lap Time Comparison Between 2021 and 2022 in the Netherlands - Charles Leclerc
+
+@fig-lecdutch shows Charles Leclerc's lap times in the Netherlands for the 2021 and 2022 Formula 1 seasons. Each point represents the lap time for a specific lap in the race, with 2021 lap times in red and 2022 in green.
+
+The data for both seasons exhibits a relatively stable baseline with periodic spikes. The consistency of the baseline indicates Leclerc’s general pace under normal racing conditions, while the spikes represent laps where his pace was significantly slower, likely due to pit stops, on-track incidents, or caution periods.
+
+Comparing the two seasons, the 2022 green dots display a trend of marginally lower lap times than in 2021, suggesting an improved performance in the 2022 season. This could be due to advancements in car performance, a better understanding of the track, tire strategies, or other race conditions.
+
+It's noteworthy that in both seasons, the spike patterns are somewhat similar, indicating that the race circumstances that caused these laps to be slower were likely regular race events like pit stops. The spikes are also comparable in magnitude between the two years, which suggests that the time spent on these slower laps did not change dramatically from year to year.
 
 ```{r}
 #| label: fig-lecdutch
@@ -601,6 +616,22 @@ grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
 
 
 # Discussion {#sec-discussion}
+
+## Deeper Insight into the 2022 Regulation Changes
+
+The 2022 Formula 1 regulations demonstrate how precise, targeted regulatory changes can substantially enhance the dynamics of competition within sports, offering a rich lesson in the effectiveness of thoughtful rule-making. These regulations primarily focused on redesigning the aerodynamics of the vehicles, aiming to mitigate the 'dirty air' effect—turbulent air left by a leading car that significantly reduces the aerodynamic efficiency of following cars. By introducing cars with ground effect designs that rely less on aerodynamic appendages susceptible to turbulence, the regulations reduced the aerodynamic wake and thereby allowed trailing cars to follow more closely without significant loss of performance.
+
+The impact of these changes on the sport is observable through a marked increase in the number and quality of overtaking maneuvers across various circuits, especially in high-speed corners where following closely used to be particularly challenging. Detailed analysis of race data shows not only a quantitative increase in overtakes but also qualitative improvements in race tactics, as drivers now exploit new overtaking opportunities that previously did not exist. This has led to races that are less predictable and more dynamic, contributing to a more engaging viewer experience and broader fan engagement.
+
+Moreover, these changes underscore a deeper principle that well-conceived regulations can drive innovation and elevate performance standards. In Formula 1, teams have been pushed to innovate within the new aerodynamic constraints, leading to rapid advancements in related technologies. This progress not only enhances the sport but also trickles down to automotive engineering more broadly, potentially influencing road car designs and technologies. Thus, the F1 2022 regulations illustrate how strategic regulatory frameworks can simultaneously enhance competitive balance, improve spectator value, and spur broader technological innovation within an industry.
+
+## Environmental and Economic Impact of 2022 Regulation Changes
+
+The 2022 Formula 1 regulations bring into focus the economic and environmental dimensions of sports regulation, particularly in how they adapt to contemporary sustainability challenges. The introduction of a cost cap is a pivotal development; it aims to equalize the competitive environment by limiting the amount teams can spend throughout a season. This economic mechanism is designed not only to curb the escalating expenditures that often see wealthier teams pull far ahead but also to foster a more strategically diverse field where innovation must be achieved within fixed financial boundaries. This could lead to smarter, more efficient use of resources, which is essential for the sport's long-term sustainability.
+
+On the environmental front, the regulations mandate the use of E10 fuel, integrating a 10% ethanol blend derived from renewable sources. This move aligns with global environmental goals by reducing the reliance on pure fossil fuels and cutting down on the sport's overall carbon emissions. Furthermore, this shift is accompanied by more rigorous aerodynamic regulations intended to decrease downforce and thus reduce fuel consumption during races. These measures collectively demonstrate Formula 1’s commitment to playing a proactive role in addressing climate change, offering a model for other sectors where environmental impact and high-performance demands intersect.
+
+These changes not only reflect an awareness of Formula 1's environmental footprint but also its role in pioneering technologies that can have broader applications. As such, the sport's regulatory framework serves as a test bed for sustainable practices that could influence automotive design and fuel technology in commercial industries, underscoring the potential of sports as a catalyst for environmental innovation.
 
 \newpage
 
