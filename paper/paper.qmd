@@ -472,6 +472,7 @@ As a result, the data suggests that these regulations had their intended effect,
 library(ggplot2)
 library(readr)
 library(dplyr)
+library(gridExtra)
 
 ver_telemetry_data_jeddah_2022 <- read.csv("../data/raw_data/verstappen_telemetry_jeddah.csv")
 ver_telemetry_data_jeddah_2021 <- read.csv("../data/raw_data/verstappen_telemetry_jeddah_2021.csv")
@@ -506,8 +507,7 @@ plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
        x = "Session Time (s)",
        y = "Speed (km/h)") +
   theme_minimal() +
-  scale_color_manual(values = c("2021" = "red", "2022" = "blue"))+
-  labs(tag = "B")
+  scale_color_manual(values = c("2021" = "red", "2022" = "blue"))
 
 grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
 ```
@@ -523,6 +523,7 @@ grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
 library(ggplot2)
 library(readr)
 library(dplyr)
+library(gridExtra)
 
 ham_telemetry_data_jeddah_2022 <- read.csv("../data/raw_data/hamilton_telemetry_jeddah.csv")
 ham_telemetry_data_jeddah_2021 <- read.csv("../data/raw_data/hamilton_telemetry_jeddah_2021.csv")
@@ -557,8 +558,7 @@ plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
        x = "Session Time (s)",
        y = "Speed (km/h)") +
   theme_minimal() +
-  scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))+
-  labs(tag = "B")
+  scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))
 
 grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
 
@@ -574,6 +574,7 @@ grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
 library(ggplot2)
 library(readr)
 library(dplyr)
+library(gridExtra)
 
 lec_telemetry_data_jeddah_2022 <- read.csv("../data/raw_data/leclerc_telemetry_jeddah.csv")
 lec_telemetry_data_jeddah_2021 <- read.csv("../data/raw_data/leclerc_telemetry_jeddah_2021.csv")
@@ -608,11 +609,159 @@ plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
        x = "Session Time (s)",
        y = "Speed (km/h)") +
   theme_minimal() +
-  scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))+
-  labs(tag = "B")
+  scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
 
 grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
 ```
+
+```{r}
+#| label: fig-verspeed-netherlands
+#| fig-cap: Verstappen Speed Comparison - Qualifying Netherlands 2022 vs 2021
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(gridExtra)
+
+ver_telemetry_data_dutch_2022 <- read.csv("../data/raw_data/verstappen_telemetry_dutch.csv")
+ver_telemetry_data_dutch_2021 <- read.csv("../data/raw_data/verstappen_telemetry_dutch_2021.csv")
+
+# Assuming telemetry_data_2022 and telemetry_data_2021 are your datasets
+ver_telemetry_data_dutch_2022$season <- "2022"
+ver_telemetry_data_dutch_2021$season <- "2021"
+
+# Combine the datasets
+combined_data <- rbind(ver_telemetry_data_dutch_2022, ver_telemetry_data_dutch_2021)
+
+# Convert session_time to a numeric type if not already
+combined_data$session_time <- as.numeric(combined_data$session_time)
+
+# Plotting
+plot1 <- ggplot(combined_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
+  scale_color_manual(values = c("2021" = "red", "2022" = "blue"))
+
+filtered_data <- combined_data %>%
+  filter(time >= 45 & time <= 60)
+
+# Plotting
+plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022 at Turn 11 and 12",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
+  scale_color_manual(values = c("2021" = "red", "2022" = "blue"))
+
+grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
+```
+
+```{r}
+#| label: fig-hamspeed-netherlands
+#| fig-cap: Hamilton Speed Comparison - Qualifying Netherlands 2022 vs 2021
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(gridExtra)
+
+ham_telemetry_data_dutch_2022 <- read.csv("../data/raw_data/hamilton_telemetry_dutch.csv")
+ham_telemetry_data_dutch_2021 <- read.csv("../data/raw_data/hamilton_telemetry_dutch_2021.csv")
+
+# Assuming telemetry_data_2022 and telemetry_data_2021 are your datasets
+ham_telemetry_data_dutch_2022$season <- "2022"
+ham_telemetry_data_dutch_2021$season <- "2021"
+
+# Combine the datasets
+combined_data <- rbind(ham_telemetry_data_dutch_2022, ham_telemetry_data_dutch_2021)
+
+# Convert session_time to a numeric type if not already
+combined_data$session_time <- as.numeric(combined_data$session_time)
+
+# Plotting
+plot1 <- ggplot(combined_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
+  scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))
+
+filtered_data <- combined_data %>%
+  filter(time >= 45 & time <= 60)
+
+# Plotting
+plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022 at Turn 11 and 12",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
+  scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))
+
+grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
+```
+
+```{r}
+#| label: fig-lecspeed-netherlands
+#| fig-cap: Leclerc Speed Comparison - Qualifying Netherlands 2022 vs 2021
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(gridExtra)
+
+lec_telemetry_data_dutch_2022 <- read.csv("../data/raw_data/leclerc_telemetry_dutch.csv")
+lec_telemetry_data_dutch_2021 <- read.csv("../data/raw_data/leclerc_telemetry_dutch_2021.csv")
+
+# Assuming telemetry_data_2022 and telemetry_data_2021 are your datasets
+lec_telemetry_data_dutch_2022$season <- "2022"
+lec_telemetry_data_dutch_2021$season <- "2021"
+
+# Combine the datasets
+combined_data <- rbind(lec_telemetry_data_dutch_2022, lec_telemetry_data_dutch_2021)
+
+# Convert session_time to a numeric type if not already
+combined_data$session_time <- as.numeric(combined_data$session_time)
+
+# Plotting
+plot1 <- ggplot(combined_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
+  scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
+
+# Filter data around 60 seconds (between 55 and 65 seconds)
+filtered_data <- combined_data %>%
+  filter(time >= 55 & time <= 65)
+
+# Plotting
+plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
+  geom_line() +
+  labs(title = "Comparison of Speeds: 2021 vs 2022 at Turn 11 and 12",
+       x = "Session Time (s)",
+       y = "Speed (km/h)") +
+  theme_minimal() +
+  scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
+
+grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
+```
+
 
 
 # Discussion {#sec-discussion}
