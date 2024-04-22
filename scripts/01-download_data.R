@@ -1,11 +1,10 @@
 #### Preamble ####
-# Purpose: Downloads and saves the data from [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 11 February 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Purpose: Download data from f1dataR
+# Author: Michael Fang
+# Date: 22 April 2024
+# Contact: m.fang@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Pre-requisites: Not Applicable
 
 
 #### Workspace setup ####
@@ -17,10 +16,8 @@ library(lubridate)
 
 #### Download data ####
 
-# EXPLAIAN THE f1dataR package
-
 # To acquire laptime data for a specific driver for a specific race, we used the f1dataR package.
-# Within the package, there is a function called "load_laps" where this function loads lap-by-lap time data for all drivers in a given season and round.
+# Within the package, there is a function called "load_standings" where it is gives data on the standings for a specific season, "load_laps" where this function loads lap-by-lap time data for all drivers in a given season and round, and a function called "load_driver_telemetry" where this function loads driver telemetery from a certain session and lap.
 
 # Load standings 2022
 
@@ -62,9 +59,6 @@ leclerc_telemetry_jeddah <- load_driver_telemetry(season = 2022, round = 2, "Q",
 
 leclerc_telemetry_jeddah_2021 <- load_driver_telemetry(season = 2021, round = 21, "Q", "LEC", laps = "fastest")
 
-
-
-
 # Load Verstappen Telemetry Data for Dutch Qualifying in 2022
 
 verstappen_telemetry_dutch <- load_driver_telemetry(season = 2022, round = 15, "Q", "VER", laps = "fastest")
@@ -88,11 +82,6 @@ leclerc_telemetry_dutch <- load_driver_telemetry(season = 2022, round = 15, "Q",
 # Load Leclerc Telemetry Data for Dutch Qualifying in 2021
 
 leclerc_telemetry_dutch_2021 <- load_driver_telemetry(season = 2021, round = 13, "Q", "LEC", laps = "fastest")
-
-
-
-
-
 
 # Load Data from the Jeddah Race in 2022 for Verstappen, Hamilton and Leclerc
 
