@@ -377,90 +377,15 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
   scale_color_manual(values = c("2021" = "red", "2022" = "darkgreen"))
 ```
 
-## Comparison of Number of Overtakes throughout each Season 2021 vs 2022
+## Fastest Qualifying Lap Comparison Between 2021 and 2022 in Jeddah - Max Verstappen, Lewis Hamilton and Charles Leclerc
 
-@fig-overtakes compares the number of overtakes during the Formula 1 racing seasons of 2021 and 2022, with Chart A focusing on total overtakes and Chart B on overtakes shown on TV. In both charts, there is a noticeable increase in the number of overtakes in the 2022 season compared to 2021.
+@fig-verspeed-jeddah, @fig-hamspeed-jeddah, @fig-lecspeed-jeddah show Max Verstappen, Lewis Hamilton and Charles Leclerc's speed comparison during qualifying sessions in Jeddah for the 2021 and 2022 Formula 1 seasons.
 
-```{r}
-#| label: fig-overtakes
-#| fig-cap: Number of Overtakes Throughout Each Season 2021 v 2022
-#| echo: false
-#| warning: false
-#| message: false
+The top graph shows a general speed comparison throughout a single lap. Both lines (2021, 2022) display similar shapes, which means that the speed profiles for the lap are fairly consistent from year to year, suggesting that the general flow and demands of the track haven't changed dramatically. However, the 2022 line largely sits above the 2021 line, indicating that the drivers speeds were generally higher during the qualifying lap in the 2022 season. This could be attributed to several factors including changes in regulations leading to faster cars, or improved engine performance.
 
-library(ggplot2)
-library(readr)
-library(dplyr)
-library(gridExtra)
+The bottom graph zeroes in on the speeds at the final corner of the lap. It's noticeable that the 2022 speed starts higher but then drops below the 2021 speed as the corner progresses. This suggests in terms of straight-line speed, the 2022 cars benefit from a reduction in drag due to sleeker aerodynamic profiles and simpler wing designs. This reduction allows the cars to achieve higher top speeds, as drag is a key limiting factor on straights. The graph reflecting the drivers speed during a qualifying lap in Jeddah corroborates this, with the 2022 car showing a generally higher velocity compared to the 2021 car, suggesting a possible increase in aerodynamic efficiency.
 
-data <- read.csv("../data/raw_data/Overtaking_Season_Averages.csv")
-
-# Filter data for the years 2021 and 2022
-filtered_data <- data[data$Season %in% c(2021, 2022), ]
-
-plot1 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Overtakes, fill = "Total Overtakes")) +
-    geom_bar(stat = "identity", color = "black", fill = "blue") +
-    labs(
-         x = "Season", y = "Number of Overtakes") +
-    theme_minimal()+
-  labs(tag = "A")
-
-plot2 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Overtakes.on.TV, fill = "Overtakes on TV")) +
-    geom_bar(stat = "identity", color = "black", fill = "red") +
-    labs(
-         x = "Season", y = "Number of Overtakes on TV") +
-    theme_minimal()+
-  labs(tag = "B")
-
-grid.arrange(plot1, plot2, ncol = 2, nrow = 1)
-
-
-```
-
-## Comparison of Average Number of Overtakes throughout each Season 2021 vs 2022
-
-@fig-averageovertakes represent the average number of overtakes per race in the Formula 1 seasons of 2021 and 2022. Chart A shows a slight increase in the average number of overtakes from the 2021 to the 2022 season, while Chart B illustrates a more noticeable increase in the average number of overtakes broadcast on TV during the same period.
-
-```{r}
-#| label: fig-averageovertakes
-#| fig-cap: Average Number of Overtakes Per Race 2021 v 2022
-#| echo: false
-#| warning: false
-#| message: false
-
-library(ggplot2)
-library(readr)
-library(dplyr)
-library(gridExtra)
-
-data <- read.csv("../data/raw_data/Overtaking_Season_Averages.csv")
-
-# Filter data for the years 2021 and 2022
-filtered_data <- data[data$Season %in% c(2021, 2022), ]
-
-plot1 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Average, fill = "Average")) +
-    geom_bar(stat = "identity", color = "black", fill = "purple") +
-    labs(
-         x = "Season", y = "Average Number of Overtakes") +
-    theme_minimal()+
-  labs(tag = "A")
-
-plot2 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Average.on.TV, fill = "Average on TV")) +
-    geom_bar(stat = "identity", color = "black", fill = "green") +
-    labs(
-         x = "Season", y = "Average Number of Overtakes on TV") +
-    theme_minimal()+
-  labs(tag = "B")
-
-grid.arrange(plot1, plot2, ncol = 2, nrow = 1)
-
-```
-
-## How the regulations had an effect on total and average number of overtakes
-
-This increase can be attributed to the major regulatory changes introduced in 2022, which aimed at promoting closer racing and more overtaking opportunities. The 2022 regulations involved a shift to ground-effect aerodynamics, allowing cars to follow each other more closely without losing significant downforce, which is crucial for maintaining speed in corners. Additionally, changes were made to the car's wings and wheel design to reduce the aerodynamic wake that can disturb the airflow for following cars, further facilitating overtaking maneuvers.
-
-As a result, the data suggests that these regulations had their intended effect, leading to more competitive races with increased overtaking, which is reflected in both the total number of overtakes and those broadcast on television. The changes not only improved the chances of overtaking but also likely enhanced the viewing experience for fans, as reflected in the consistency of overtakes shown on TV, which closely aligns with the actual increase in overtakes. This might indicate that more of the action was deemed broadcast-worthy, potentially due to the more dynamic and visually engaging nature of the overtakes under the new regulations.
+However, this enhanced straight-line speed contrasts with the performance in corners. The heavier 2022 cars, combined with the sensitivity of ground effect aerodynamics to ride height changes—which are more pronounced at lower speeds—result in a compromise in agility and cornering speed. The detailed segment of the drivers lap times at the final corner in Jeddah illustrates this, where the 2022 car initially enters the corner at a higher speed, indicative of the benefits on the preceding straight, but then experiences a sharper decline in speed through the corner itself. This suggests that while the car gains time on the straights, it loses some of this advantage in the slower sections of the track due to the new aerodynamic characteristics and increased weight.
 
 ```{r}
 #| label: fig-verspeed-jeddah
@@ -510,6 +435,7 @@ plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
   scale_color_manual(values = c("2021" = "red", "2022" = "blue"))
 
 grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
+
 ```
 
 
@@ -762,9 +688,100 @@ plot2 <- ggplot(filtered_data, aes(x = time, y = speed, color = season)) +
 grid.arrange(plot1, plot2, ncol = 1, nrow = 2)
 ```
 
+## Comparison of Number of Overtakes throughout each Season 2021 vs 2022
 
+@fig-overtakes compares the number of overtakes during the Formula 1 racing seasons of 2021 and 2022, with Chart A focusing on total overtakes and Chart B on overtakes shown on TV. In both charts, there is a noticeable increase in the number of overtakes in the 2022 season compared to 2021.
+
+```{r}
+#| label: fig-overtakes
+#| fig-cap: Number of Overtakes Throughout Each Season 2021 v 2022
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(gridExtra)
+
+data <- read.csv("../data/raw_data/Overtaking_Season_Averages.csv")
+
+# Filter data for the years 2021 and 2022
+filtered_data <- data[data$Season %in% c(2021, 2022), ]
+
+plot1 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Overtakes, fill = "Total Overtakes")) +
+    geom_bar(stat = "identity", color = "black", fill = "blue") +
+    labs(
+         x = "Season", y = "Number of Overtakes") +
+    theme_minimal()+
+  labs(tag = "A")
+
+plot2 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Overtakes.on.TV, fill = "Overtakes on TV")) +
+    geom_bar(stat = "identity", color = "black", fill = "red") +
+    labs(
+         x = "Season", y = "Number of Overtakes on TV") +
+    theme_minimal()+
+  labs(tag = "B")
+
+grid.arrange(plot1, plot2, ncol = 2, nrow = 1)
+
+
+```
+
+## Comparison of Average Number of Overtakes throughout each Season 2021 vs 2022
+
+@fig-averageovertakes represent the average number of overtakes per race in the Formula 1 seasons of 2021 and 2022. Chart A shows a slight increase in the average number of overtakes from the 2021 to the 2022 season, while Chart B illustrates a more noticeable increase in the average number of overtakes broadcast on TV during the same period.
+
+```{r}
+#| label: fig-averageovertakes
+#| fig-cap: Average Number of Overtakes Per Race 2021 v 2022
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(gridExtra)
+
+data <- read.csv("../data/raw_data/Overtaking_Season_Averages.csv")
+
+# Filter data for the years 2021 and 2022
+filtered_data <- data[data$Season %in% c(2021, 2022), ]
+
+plot1 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Average, fill = "Average")) +
+    geom_bar(stat = "identity", color = "black", fill = "purple") +
+    labs(
+         x = "Season", y = "Average Number of Overtakes") +
+    theme_minimal()+
+  labs(tag = "A")
+
+plot2 <- ggplot(filtered_data, aes(x = as.factor(Season), y = Average.on.TV, fill = "Average on TV")) +
+    geom_bar(stat = "identity", color = "black", fill = "green") +
+    labs(
+         x = "Season", y = "Average Number of Overtakes on TV") +
+    theme_minimal()+
+  labs(tag = "B")
+
+grid.arrange(plot1, plot2, ncol = 2, nrow = 1)
+
+```
+
+## How the regulations had an effect on total and average number of overtakes
+
+This increase can be attributed to the major regulatory changes introduced in 2022, which aimed at promoting closer racing and more overtaking opportunities. The 2022 regulations involved a shift to ground-effect aerodynamics, allowing cars to follow each other more closely without losing significant downforce, which is crucial for maintaining speed in corners. Additionally, changes were made to the car's wings and wheel design to reduce the aerodynamic wake that can disturb the airflow for following cars, further facilitating overtaking maneuvers.
+
+As a result, the data suggests that these regulations had their intended effect, leading to more competitive races with increased overtaking, which is reflected in both the total number of overtakes and those broadcast on television. The changes not only improved the chances of overtaking but also likely enhanced the viewing experience for fans, as reflected in the consistency of overtakes shown on TV, which closely aligns with the actual increase in overtakes. This might indicate that more of the action was deemed broadcast-worthy, potentially due to the more dynamic and visually engaging nature of the overtakes under the new regulations.
 
 # Discussion {#sec-discussion}
+
+## Are the 2022 f1 cars faster then their predecessor?
+
+The 2022 regulations introduced a shift back to ground effect aerodynamics, a method that relies on the car’s underbody design to generate a large portion of its downforce. This allows for more stable aerodynamics when following another car closely, which ideally enhances overtaking opportunities and racing quality. However, these changes also mean that the cars generate less downforce overall compared to the high-rake aerodynamics used in previous years. Less downforce generally leads to slower speeds in high-speed corners, which can contribute to slower lap times overall.
+
+Another significant factor is the increase in the minimum weight of the cars. The 2022 regulations raised the minimum weight from 752 kg to 798 kg, largely due to the introduction of heavier and safer chassis requirements and other components like bigger wheels (18 inches up from 13 inches). Heavier cars require more energy to accelerate and decelerate, which naturally results in slower lap times, especially evident in tighter, more technical circuits where agility and quick changes of direction are crucial.
+
+The switch to 18-inch wheels from the previous 13-inch also impacts the car's performance. The larger rims come with a lower-profile tire, which behaves differently compared to the high-profile tires used earlier. These changes affect the suspension geometry and dynamics, as well as how the tire copes with heat and wear during a race. While designed to be more durable, the new tires may not provide the same level of grip and responsiveness as the previous designs, potentially leading to slower lap times. 2022 F1 cars are engineered with a different set of priorities and constraints, focusing on enhancing the racing experience and safety. While this might mean they are initially slower in terms of lap times, they offer improved performance in terms of race dynamics, such as in duels and overtakes.
 
 ## Deeper Insight into the 2022 Regulation Changes
 
