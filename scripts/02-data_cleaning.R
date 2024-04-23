@@ -1,11 +1,11 @@
 #### Preamble ####
-# Purpose: Cleans the raw plane data recorded by two observers..... [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 6 April 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Purpose: Cleans the raw F1 data
+# Author: Michael Fang
+# Date: 22 April 2024
+# Contact: m.fang@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Pre-requisites:
+# - 01-download_data.R
 
 #### Workspace setup ####
 library(tidyverse)
@@ -237,8 +237,15 @@ raw_lec_dutch_2021 <- raw_lec_dutch_2021 %>%
 
 
 #### Save data ####
+
+# Becase of errors that occur when trying to save files as parquet, the files will not be saved as parquet format.
+# Error that Occurs:
+# Error in parquet___WriterProperties___Builder__create() : 
+# Cannot call parquet___WriterProperties___Builder__create(). See https://arrow.apache.org/docs/r/articles/install.html for help installing Arrow C++ libraries. 
+
 write_csv(raw_standings_2022, "data/analysis_data/standings_2022_cleaned.csv")
 write_csv(raw_standings_2021, "data/analysis_data/standings_2021_cleaned.csv")
+
 write_csv(raw_ver_jeddah_2022, "data/analysis_data/verstappen_laps_jeddah_2022_cleaned.csv")
 write_csv(raw_ver_jeddah_2021, "data/analysis_data/verstappen_laps_jeddah_2021_cleaned.csv")
 write_csv(raw_ham_jeddah_2022, "data/analysis_data/hamilton_laps_jeddah_2022_cleaned.csv")
