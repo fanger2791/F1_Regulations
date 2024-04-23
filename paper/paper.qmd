@@ -301,6 +301,8 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
 
 ```
 
+\newpage
+
 ## Lap Time Comparison Between 2021 and 2022 in the Netherlands - Lewis Hamilton
 
 @fig-lewisdutch shows Lewis Hamilton's lap times in the Netherlands for the 2021 and 2022 Formula 1 seasons. Looking at the 2021 season, represented by the purple dots, we see a consistent baseline of lap times with occasional spikes. The baseline lap time is quite stable, suggesting consistent performance throughout the race when unaffected by external factors. The 2022 season, shown in yellow, follows a similar pattern of consistency but with fewer and less pronounced spikes. Moreover, the baseline lap times in 2022 appear to be consistently higher than in 2021. This implies that laptimes were also slower in 2022.
@@ -337,6 +339,8 @@ ggplot(combined_df, aes(x = `Lap #`, y = `LapTime in Seconds`, color = Season)) 
        color = "Season") +
   scale_color_manual(values = c("2021" = "purple", "2022" = "gold"))
 ```
+
+\newpage
 
 ## Lap Time Comparison Between 2021 and 2022 in the Netherlands - Charles Leclerc
 
@@ -787,11 +791,7 @@ grid.arrange(plot1, plot2, ncol = 2, nrow = 1)
 
 ```
 
-## How the regulations had an effect on total and average number of overtakes
-
-This increase can be attributed to the major regulatory changes introduced in 2022, which aimed at promoting closer racing and more overtaking opportunities. The 2022 regulations involved a shift to ground-effect aerodynamics, allowing cars to follow each other more closely without losing significant downforce, which is crucial for maintaining speed in corners. Additionally, changes were made to the car's wings and wheel design to reduce the aerodynamic wake that can disturb the airflow for following cars, further facilitating overtaking maneuvers.
-
-As a result, the data suggests that these regulations had their intended effect, leading to more competitive races with increased overtaking, which is reflected in both the total number of overtakes and those broadcast on television. The changes not only improved the chances of overtaking but also likely enhanced the viewing experience for fans, as reflected in the consistency of overtakes shown on TV, which closely aligns with the actual increase in overtakes. This might indicate that more of the action was deemed broadcast-worthy, potentially due to the more dynamic and visually engaging nature of the overtakes under the new regulations.
+\newpage
 
 # Discussion {#sec-discussion}
 
