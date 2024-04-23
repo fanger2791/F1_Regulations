@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Basic data integrity checks for datasets using tidyverse. This script first defines the check_census_data function tailored to check for:
+# Purpose: Basic data integrity checks for datasets using tidyverse. This script first defines the check_lap_data function tailored to check for:
 # - Check if all expected columns are present
 # - Check for missing values in key columns
 # - Check data types for each column
